@@ -5,7 +5,8 @@
   "author": "Jose Renteria <JoseRenteria.sf@outlook.com>",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "npm run server | npm run vue",
+    "stop": "pm2 stop all",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
