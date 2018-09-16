@@ -14,21 +14,9 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import Component from 'vue-class-component'
-//
-// export default Component({})(
-//   class Tiny extends Vue {
-//     longURL = '';
-//
-//     onSubmit () {
-//       console.log('Clicked form')
-//     }
-//   }
-// )
+import axios from 'axios'
 
 var tiny = {
-  // el: '#tiny-form',
   name: 'tiny',
   data: function () {
     return {
@@ -40,6 +28,16 @@ var tiny = {
     onSubmit: function (evt) {
       evt.preventDefault()
       console.log('Clicked form', this.form.longURL)
+      axios({method: 'post',
+        baseURL: 'http://localhost:5000/',
+        url: '/api',
+        data: {
+          longURL: this.form.longURL
+        }}).then(response => {
+        console.log(response)
+      }).catch(response => console.log(response))
+
+      this.form.longURL = ''
     }
   }
 }
